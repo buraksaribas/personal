@@ -156,7 +156,7 @@
     },
     "custom/power": {
         "format" : "⏻ ",
-	    "on-click": "wlogout -p layer-shell",
+	    "on-click": "~/.config/waybar/scripts/power_menu.sh",
 	    "tooltip": false
     },
 }

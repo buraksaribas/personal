@@ -25,9 +25,11 @@ packages=(
     zsh
     fzf
     neovim
-    alacritty
+    tmux
+    # alacritty
     waybar
-    wofi
+    # wofi
+    rofi
     hyprpaper
     hyprlock
     hypridle
@@ -87,6 +89,7 @@ if ! command -v paru &> /dev/null; then
     cd /tmp/paru
     makepkg -si --noconfirm
     cd ~
+    rm -rf /tmp/paru
 else
     echo "✅ Paru already installed."
 fi
@@ -95,9 +98,10 @@ fi
 # 🎯 Install AUR packages
 # -----------------------------------
 aur_packages=(
-    ghostty
-    wlogout
-    visual-studio-code-bin
+    # ghostty
+    # wlogout
+    # visual-studio-code-bin
+    nvm
 )
 
 echo "📦 Installing AUR packages..."
@@ -108,14 +112,20 @@ paru -S --noconfirm "${aur_packages[@]}"
 # -----------------------------------
 echo "🔗 Linking dotfiles..."
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 mkdir -p ~/.config
 
 for file in .zshrc .bashrc .gitconfig; do
-    ln -sf ~/dotfiles/$file ~/$file
+    ln -sf ~/personal/dotfiles/$file ~/$file
 done
 
 for config in nvim hypr waybar wofi alacritty; do
-    ln -sf ~/dotfiles/.config/$config ~/.config/$config
+    target=~/.config/$config
+    rm -rf "$target"
+    ln -sf ~/personal/dotfiles/.config/$config ~/.config/$config
 done
 
 # -----------------------------------
