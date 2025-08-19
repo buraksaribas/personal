@@ -1,63 +1,41 @@
-local map = vim.keymap.set
+vim.keymap.set("i", "jk", "<Esc>", { desc = "" })
+vim.keymap.set("i", "kj", "<Esc>", { desc = "" })
 
--- ========== General Keymaps ==========
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "" })
 
-map("n", "<Space>", "<Nop>", { silent = true }) -- Unmap <Space> so it can be used as a leader
-vim.g.mapleader = " " -- Set <Space> as the leader key
-vim.g.maplocalleader = " " -- Set local leader key
+vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<CR>", { desc = "" })
+vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<CR>", { desc = "" })
+vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<CR>", { desc = "" })
+vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "" })
 
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear search highlight" }) -- Cancel search highlight with <Esc>
-map("i", "jk", "<Esc>", { desc = "Exit insert mode quickly" }) -- Fast exit from insert mode
+vim.keymap.set("n", "<C-Up>", ":resize -2<CR>", { desc = "" })
+vim.keymap.set("n", "<C-Down>", ":resize +2<CR>", { desc = "" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "" })
 
--- ========== File Operations ==========
+vim.keymap.set("t", "<C-Up>", "<cmd>resize -2<CR>", { desc = "" })
+vim.keymap.set("t", "<C-Down>", "<cmd>resize +2<CR>", { desc = "" })
+vim.keymap.set("t", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "" })
+vim.keymap.set("t", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "" })
 
-map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit window" })
-map("n", "<leader>qq", "<cmd>qall!<CR>", { desc = "Quit all without saving" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
--- ========== Window & Tab Management ==========
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "" })
 
-map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-map("n", "<leader>se", "<C-w>=", { desc = "Equalize window sizes" })
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+vim.keymap.set("n", "<leader>bl", "<cmd>bnext<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>bh", "<cmd>bprevious<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "Go left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Go down window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Go up window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Go right window" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabprevious<CR>", { desc = "" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabnext<CR>", { desc = "" })
 
-map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-map("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Next tab" })
-map("n", "<leader>tp", "<cmd>tabprev<CR>", { desc = "Previous tab" })
-
--- ========== Navigation ==========
-
-map("n", "<C-d>", "<C-d>zz", { desc = "Half-page down and center" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Half-page up and center" })
-map("n", "n", "nzzzv", { desc = "Next search result centered" })
-map("n", "N", "Nzzzv", { desc = "Previous search result centered" })
-
--- ========== Moving Text ==========
-
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
-
--- ========== Buffers ==========
-
-map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })
-map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Delete buffer" })
-
--- ========== Terminal ==========
-
-map("n", "<leader>tt", "<cmd>split | terminal<CR>", { desc = "Open terminal in split" })
-map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- ========== Diagnostics ==========
-
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics to location list" })
+vim.keymap.set("v", "p", '"_dP')
