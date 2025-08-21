@@ -37,7 +37,7 @@ return {
 			desc = "Find Old Files",
 		},
 		{
-			"<leader>fc",
+			"<leader>f:",
 			"<cmd>Telescope commands<CR>",
 			desc = "Find Commands",
 		},
@@ -47,7 +47,7 @@ return {
 			desc = "List Keymaps",
 		},
 		{
-			"<leader>fC",
+			"<leader>ft",
 			"<cmd>Telescope colorscheme<CR>",
 			desc = "List colorschemes",
 		},
@@ -55,6 +55,16 @@ return {
 			"<leader>gc",
 			"<cmd>Telescope git_commits<CR>",
 			desc = "List Git Commits",
+		},
+		{
+			"<leader>fc",
+			function()
+				require("telescope.builtin").find_files({
+					prompt_title = "Neovim Config",
+					cwd = vim.fn.stdpath("config"),
+				})
+			end,
+			desc = "Find Neovim Config Files",
 		},
 	},
 	opts = function()

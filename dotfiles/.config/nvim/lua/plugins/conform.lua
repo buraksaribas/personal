@@ -18,6 +18,8 @@ return {
 			python = { "isort", "black" },
 			rust = { "rustfmt" },
 			javascript = { "prettierd" },
+			json = { "prettierd" },
+			jsonc = { "prettierd" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",

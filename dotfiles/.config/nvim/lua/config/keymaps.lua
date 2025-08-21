@@ -39,3 +39,8 @@ vim.keymap.set("n", "<leader>tl", "<cmd>tabprevious<CR>", { desc = "" })
 vim.keymap.set("n", "<leader>th", "<cmd>tabnext<CR>", { desc = "" })
 
 vim.keymap.set("v", "p", '"_dP')
+
+vim.keymap.set("n", "<leader>x", function()
+	local file = vim.fn.expand("%:p")
+	vim.cmd("!chmod +x " .. file)
+end, { desc = "Make file executable" })

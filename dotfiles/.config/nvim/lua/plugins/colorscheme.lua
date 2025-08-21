@@ -9,6 +9,12 @@ return {
 			float = {
 				transparent = true,
 			},
+			custom_highlights = function(colors)
+				return {
+					FloatBorder = { fg = colors.lavender },
+					BlinkCmpMenuBorder = { fg = colors.lavender },
+				}
+			end,
 		})
 		vim.cmd.colorscheme("catppuccin")
 	end,

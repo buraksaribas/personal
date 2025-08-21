@@ -14,6 +14,7 @@ return {
 				"tailwindcss-language-server",
 				"gopls",
 				"jdtls",
+				"json-lsp",
 
 				"stylua",
 				"prettierd",

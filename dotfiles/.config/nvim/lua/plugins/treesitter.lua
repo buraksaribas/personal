@@ -19,6 +19,7 @@ return {
 			"css",
 			"javascript",
 			"typescript",
+			"json",
 		},
 		sync_install = false,
 		auto_install = false,
