@@ -3,14 +3,13 @@
 * {
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 13px;
-  transition: all 0.2s ease;
+  border-radius: 0;
 }
 
 window#waybar {
   background-color: rgba(30, 30, 46, 0.9);
   border-bottom: 2px solid @lavender;
   color: @text;
-  border-radius: 0 0 10px 10px;
 }
 
 window#waybar.hidden {
@@ -30,7 +29,6 @@ window#waybar.chromium {
 tooltip {
   background: rgba(49, 50, 68, 0.9);
   border: 1px solid @lavender;
-  border-radius: 10px;
   color: @text;
   /* padding: 3px 7px; */
 }
@@ -55,9 +53,6 @@ button:hover {
   color: @text;
 }
 
-#workspaces button:first-child {
-  border-bottom-left-radius: 10px;
-}
 
 #workspaces button:hover {
   color: @lavender;
@@ -65,6 +60,7 @@ button:hover {
 
 #workspaces button.focused {
   background-color: @lavender;
+  color: @base;
 }
 
 #workspaces button.urgent {
@@ -77,7 +73,6 @@ button:hover {
   border: 1px solid @lavender;
   color: @text;
   padding: 0 6px;
-  border-radius: 6px;
 }
 
 #clock,
@@ -91,7 +86,10 @@ button:hover {
 #bluetooth,
 #idle_inhibitor,
 #systemd-failed-units,
+#network,
 #custom-camera,
+#custom-uptime,
+#custom-weather,
 #custom-power {
   padding: 0 5px;
 }
@@ -108,7 +106,12 @@ button:hover {
 #bluetooth:hover,
 #idle_inhibitor:hover,
 #custom-camera:hover,
-#systemd-failed-units:hover {
+#systemd-failed-units:hover,
+#network:hover,
+#custom-weather:hover,
+#custom-power:hover,
+#custom-uptime:hover 
+{
   background: inherit;
   box-shadow: inset 0 2px @lavender;
 

@@ -1,0 +1,75 @@
+[theme]
+theme = "ctp-mocha"
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "focused_window"
+[block.format]
+full = "$marks $visible_marks $title.str(w:300)|"
+short = "$marks $visible_marks $title.str(w:100)|"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "backlight"
+if_command = "test -e /sys/class/backlight/amdgpu_bl1"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "used"
+format = " $icon $path $percentage|"
+alert_unit = "GB"
+alert = 3.0
+warning = 5.0
+
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents.eng(w:1) "
+format_alt = " $icon_swap $swap_free.eng(w:3,u:B,p:M)/$swap_total.eng(w:3,u:B,p:M)($swap_used_percents.eng(w:2)) "
+interval = 30
+warning_mem = 70
+critical_mem = 90
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $barchart $utilization "
+format_alt = " $icon $frequency{ $boost|} "
+
+[[block]]
+block = "load"
+interval = 1
+format = "$1m.eng(w:3) $5m.eng(w:3) $15m.eng(w:3)"
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
+device = "BAT0"
+format = "$percentage|N/A"
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT1"
+device = "BAT1"
+format = "$percentage|N/A"
+
+[[block]]
+block = "time"
+interval = 60
+[block.format]
+full = " $icon $timestamp.datetime(f:'%A %e %B %Y, %H:%M', l:fr_FR) "
+short = " $icon $timestamp.datetime(f:'%F %H:%M') "
+
+

@@ -7,6 +7,12 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
-. "$HOME/.cargo/env"
-source /usr/share/nvm/init-nvm.sh
+
+# Colorful Prompt
+if [ "$TERM" != "dumb" ]; then
+  PS1='\[\e[0;35m\]\u\[\e[0;36m\]@\h \[\e[0;32m\]\w \[\e[0;37m\]\$ \[\e[0m\]'
+fi
+
+eval "$(mise activate bash)"
+
+

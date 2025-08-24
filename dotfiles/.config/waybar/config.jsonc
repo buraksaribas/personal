@@ -1,11 +1,11 @@
 {
-  "layer": "bottom",
+  "layer": "top",
   "position": "top",
   "height": 30,
   // "width": 1280,
   // "margin": 2,
   "spacing": 4,
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-left": ["sway/workspaces", "sway/window","sway/mode"],
   "modules-center": ["clock", "custom/weather"],
   "modules-right": [
     "idle_inhibitor",
@@ -15,13 +15,15 @@
     "memory",
     "temperature",
     "backlight",
-    "battery",
+    "network",
     "bluetooth",
+    "battery",
     "tray",
     "systemd-failed-units",
+    "custom/uptime",
     "custom/power",
   ],
-  "hyprland/workspaces": {
+  "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
@@ -32,6 +34,9 @@
       "default": "",
     },
   },
+      "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -57,11 +62,11 @@
       "mode-mon-col": 3,
       "on-scroll": 1,
       "format": {
-        "months": "<span color='#d47c7c'><b>{}</b></span>",
-        "days": "<span color='#e8e6e3'><b>{}</b></span>",
-        "weeks": "<span color='#5a9fd4'><b>W{}</b></span>",
-        "weekdays": "<span color='#7db4b4'><b>{}</b></span>",
-        "today": "<span color='#d4a574'><b><u>{}</u></b></span>",
+        "months": "<span color='#f38ba8'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#74c7ec'><b>W{}</b></span>",
+        "weekdays": "<span color='#a6e3a1'><b>{}</b></span>",
+        "today": "<span color='#fab487'><b><u>{}</u></b></span>",
       },
     },
     "actions": {
@@ -78,6 +83,7 @@
   },
   "memory": {
     "format": "{}% ",
+    "on-click": "foot -e htop"
   },
   "systemd-failed-units": {
     "hide-on-ok": false, // Do not hide if there is zero failed units.
@@ -94,6 +100,15 @@
     "format": "{temperatureC}°C {icon}",
     "format-icons": ["", "", ""],
   },
+  "network": {
+        "format-wifi": "󰖩 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "foot -e nmtui"
+    },
   "bluetooth": {
     // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
     "format": " {status}",
@@ -164,4 +179,9 @@
     "interval": 1800,
     "tooltip": true,
   },
+  "custom/uptime": {
+        "format": "󰔟 {}",
+        "exec": "uptime -p | sed 's/up //; s/ days/d/; s/ hours/h/; s/ minutes/m/'",
+        "interval": 60
+    },
 }

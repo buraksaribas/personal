@@ -1,10 +1,10 @@
 vim.lsp.enable({
 	"lua_ls",
-	-- "ts_ls",
+	"ts_ls",
 	-- "gopls",
 	"html",
 	"cssls",
-	-- "tailwindcss",
+	"tailwindcss",
 })
 
 local capabilities = {

@@ -5,13 +5,6 @@ set -e
 echo "🔧 Starting Arch Linux + Hyprland setup..."
 
 # -----------------------------------
-# 🌐 Update mirror list
-# -----------------------------------
-echo "🌐 Updating mirror list..."
-sudo pacman -S --noconfirm reflector
-sudo reflector --latest 10 --sort rate --fastest 5 --save /etc/pacman.d/mirrorlist
-
-# -----------------------------------
 # 📦 Official packages
 # -----------------------------------
 packages=(

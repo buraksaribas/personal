@@ -3,10 +3,10 @@
 chosen=$(printf " Lock\n Shutdown\n Reboot\n Logout\n Suspend\n Hibernate" | rofi -dmenu -i -p "Power")
 
 case "$chosen" in
-  *Lock*) hyprlock ;;
+  *Lock*) swaylock ;;
   *Shutdown*) systemctl poweroff ;;
   *Reboot*) systemctl reboot ;;
-  *Logout*) hyprctl dispatch exit ;;
+  *Logout*)  swaymsg exit ;;
   *Suspend*) systemctl suspend ;;
   *Hibernate*) systemctl hibernate ;;
   *) exit 0 ;;
