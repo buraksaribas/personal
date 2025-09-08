@@ -14,6 +14,7 @@ return {
 				library = {
 					vim.env.VIMRUNTIME,
 					"${3rd}/luv/library",
+					"${3rd}/love2d/library",
 				},
 			},
 			telemetry = {

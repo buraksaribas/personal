@@ -24,6 +24,8 @@ sudo pacman -S git \
   ripgrep \
   docker \
   docker-compose \
+  yazi \
+  tmux \
 
 
 

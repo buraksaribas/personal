@@ -25,6 +25,9 @@ return {
 			typescriptreact = { "prettierd" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
+			java = { "google-java-format" },
+			go = { "goimports", "golines", "gopls" },
+			xml = { "xmlformatter" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",

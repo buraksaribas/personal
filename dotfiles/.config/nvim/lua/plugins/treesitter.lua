@@ -19,13 +19,17 @@ return {
 			"css",
 			"javascript",
 			"typescript",
+			"tsx",
 			"json",
+			"yaml",
+			"go",
+			"python",
 		},
 		sync_install = false,
-		auto_install = false,
-		ignore_install = {},
+		auto_install = true,
 		highlight = {
 			enable = true,
+			disable = {},
 			additional_vim_regex_highlighting = false,
 		},
 		indent = {
@@ -67,12 +71,15 @@ return {
 			swap = {
 				enable = true,
 				swap_next = {
-					[")a"] = "@parameter.inner",
+					["<leader>a"] = "@parameter.inner",
 				},
 				swap_previous = {
-					[")A"] = "@parameter.inner",
+					["<leader>A"] = "@parameter.inner",
 				},
 			},
 		},
 	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }

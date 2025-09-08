@@ -30,16 +30,6 @@ local function get_bundles()
 		end
 	end
 
-	-- Debug: print found bundles (remove this after confirming it works)
-	if #bundles > 0 then
-		print("JDTLS bundles found: " .. #bundles)
-		for i, bundle in ipairs(bundles) do
-			print("  " .. i .. ": " .. bundle)
-		end
-	else
-		print("Warning: No JDTLS bundles found!")
-	end
-
 	return bundles
 end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
@@ -111,11 +101,11 @@ local config = {
 				runtimes = {
 					{
 						name = "JavaSE-17",
-						path = "/usr/lib/jvm/java-17-openjdk",
+						path = home .. "/.local/share/mise/installs/java/temurin-17",
 					},
 					{
 						name = "JavaSE-21",
-						path = "/usr/lib/jvm/java-21-openjdk",
+						path = home .. "/.local/share/mise/installs/java/temurin-21",
 					},
 				},
 			},
@@ -134,7 +124,7 @@ local config = {
 		"java.base/java.util=ALL-UNNAMED",
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
-		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/plugins/lombok.jar",
+		-- "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/plugins/lombok.jar",
 		"-jar",
 		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 		"-configuration",

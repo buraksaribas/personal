@@ -1,10 +1,14 @@
 vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
-	-- "gopls",
+	"gopls",
 	"html",
 	"cssls",
 	"tailwindcss",
+	"pyright",
+	"dockerls",
+	"docker_compose_language_service",
+	"yamlls",
 })
 
 local capabilities = {
