@@ -24,6 +24,9 @@ return {
 			"yaml",
 			"go",
 			"python",
+
+			--
+			"prisma",
 		},
 		sync_install = false,
 		auto_install = true,

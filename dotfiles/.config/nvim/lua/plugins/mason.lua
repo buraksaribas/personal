@@ -31,6 +31,8 @@ return {
 
 				"java-debug-adapter",
 				"java-test",
+
+				"prisma-language-server",
 			},
 			auto_update = false,
 			run_on_start = true,
