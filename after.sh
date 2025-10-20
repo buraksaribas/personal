@@ -1,4 +1,4 @@
-sudo pacman -Syu --nocinform
+sudo pacman -Syu --noconfirm
 
 sudo pacman -S --noconfirm \
   git \
