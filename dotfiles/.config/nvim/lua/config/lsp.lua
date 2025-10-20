@@ -10,6 +10,7 @@ vim.lsp.enable({
 	"docker_compose_language_service",
 	"yamlls",
 	"prismals",
+	"clangd",
 })
 
 local capabilities = {

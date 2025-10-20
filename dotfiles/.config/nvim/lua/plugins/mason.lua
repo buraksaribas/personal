@@ -18,6 +18,7 @@ return {
 				"docker-compose-language-service",
 				"docker-language-server",
 				"yaml-language-server",
+				"clangd",
 
 				"stylua",
 				"prettierd",
@@ -28,9 +29,13 @@ return {
 				"isort",
 				"black",
 				"xmlformatter",
+				"clang-format",
+				"templ",
 
 				"java-debug-adapter",
 				"java-test",
+				"debugpy",
+				"codelldb",
 
 				"prisma-language-server",
 			},

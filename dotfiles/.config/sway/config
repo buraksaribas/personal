@@ -276,5 +276,7 @@ bar {
 
 for_window [app_id="pavucontrol"] floating enable
 for_window [floating] move position center
+for_window [class="Godot" instance="Godot_Editor" title=".*"] floating enable
+for_window [class="Godot" instance="Godot_Editor" title=".*Godot Engine"] floating disable
 
 include /etc/sway/config.d/*

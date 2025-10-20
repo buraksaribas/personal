@@ -14,6 +14,8 @@ return {
 	},
 	opts = {
 		formatters_by_ft = {
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			rust = { "rustfmt" },
@@ -26,7 +28,7 @@ return {
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
 			java = { "google-java-format" },
-			go = { "goimports", "golines", "gopls" },
+			go = { "goimports", "golines" },
 			xml = { "xmlformatter" },
 		},
 		default_format_opts = {
