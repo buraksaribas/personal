@@ -8,7 +8,7 @@
 
 window#waybar {
   background-color: rgba(30, 30, 46, 0.9);
-  border-bottom: 2px solid @lavender;
+  /*border-bottom: 2px solid @lavender;*/
   color: @text;
 }
 

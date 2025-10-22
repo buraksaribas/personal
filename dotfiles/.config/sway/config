@@ -31,7 +31,7 @@ set $exit swaynag -t warning \
 
 
 exec mako
-exec_always wlsunset -l 41.0082,28.9784 
+# exec_always wlsunset -l 41.0082,28.9784 
 
 # Font
 font pango:JetBrains Mono 11

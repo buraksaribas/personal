@@ -83,7 +83,7 @@
   },
   "memory": {
     "format": "{}% ",
-    "on-click": "foot -e htop"
+    "on-click": "foot -e btop"
   },
   "systemd-failed-units": {
     "hide-on-ok": false, // Do not hide if there is zero failed units.
