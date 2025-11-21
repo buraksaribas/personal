@@ -14,11 +14,11 @@ echo "Installing packages..."
 sudo pacman -S --noconfirm --needed \
   base base-devel bash-completion \
   dnsmasq dosfstools docker fastfetch fd file-roller \
-  firefox fuse3 fzf gimp git go grim htop \
+  firefox fuse3 fzf gimp git grim htop \
   inkscape lazygit libnotify libpulse libvirt \
-  man-db mtools nano neovim \
+  man-db mtools mise nano neovim \
   ntfs-3g openbsd-netcat os-prober \
-  qemu-full ripgrep rustup \
+  qemu-full ripgrep \
   speech-dispatcher thunar thunar-archive-plugin \
   tlp tlp-rdw ttf-iosevka-nerd ufw unrar unzip vde2 vim virt-manager \
   virt-viewer vlc vlc-plugin-ffmpeg wget \

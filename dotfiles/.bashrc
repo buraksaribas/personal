@@ -107,13 +107,4 @@ bd=38;2;238;212;159:cd=38;2;238;212;159:\
 su=38;2;237;135;150:ow=38;2;166;209;137:st=38;2;125;196;228:\
 tw=38;2;166;209;137:*~=38;2;165;173;203"
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  nvm "$@"
-}
+eval "$(mise activate bash)"
