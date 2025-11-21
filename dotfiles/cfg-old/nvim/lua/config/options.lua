@@ -1,0 +1,42 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.colorcolumn = "80"
+vim.opt.signcolumn = "yes"
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.showmode = false
+vim.opt.laststatus = 3
+-- vim.opt.cmdheight = 1
+-- vim.opt.pumheight = 10
+vim.opt.title = true
+vim.opt.lazyredraw = true
+vim.opt.completeopt = { "menuone", "noselect" }
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+
+vim.o.winborder = "rounded"

@@ -1,19 +1,17 @@
-# Colors
-
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#b4befe
-progress-color=over #313244
+background-color=#24273a
+text-color=#cad3f5
+border-color=#b7bdf8
+progress-color=over #363a4f
 
 [urgency=high]
-border-color=#fab387
+border-color=#f5a97f
 
-font=JetBrainsMono Nerd Font 11
+font=Iosevka Nerd Font 16
 layer=overlay
 anchor=top-right
 width=300
 height=110
-margin=5
+margin=0
 padding=0,5,10
 border-size=2
 border-radius=0
@@ -24,7 +22,6 @@ ignore-timeout=1
 
 [urgency=high]
 default-timeout=0
-
 
 [summary~="log-.*"]
 border-color=#ffe6a7

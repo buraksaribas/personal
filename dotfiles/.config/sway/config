@@ -1,6 +1,14 @@
-include catppuccin-mocha
+include themes/catppuccin-macchiato
+
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
 
 ### Variables
+#
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -8,70 +16,52 @@ set $down j
 set $up k
 set $right l
 set $term foot
-set $menu2 wmenu-run
-set $menu rofi -show drun
+set $file thunar
+set $menu wmenu-run
 set $browser firefox
-set $exit swaynag -t warning \
-  -m 'Do you really want to exit sway? This will end your Wayland session.' \
-  -b 'Suspend' 'systemctl suspend' \
-  -b 'Lock' 'swaylock' \
-  -b 'Shutdown' 'systemctl -i poweroff' \
-  -b 'Reboot' 'systemctl -i reboot' \
-  -b 'Yes, exit sway' 'swaymsg exit' \
-  --background 1e1e2e \
-  --text cdd6f4 \
-  --font 'JetBrainsMono Nerd Font 11' \
-  --border b4befe \
-  --border-bottom b4befe \
-  --button-background 313244 \
-  --button-text cdd6f4 \
-  --button-border 6c7086 \
-  --button-border-size 2 \
-  --button-padding 8
 
-
-exec mako
-# exec_always wlsunset -l 41.0082,28.9784 
-
-# Font
-font pango:JetBrains Mono 11
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/personal/wallpapers/purpled-night.jpg fill
-# You can get the names of your outputs by running: swaymsg -t get_output
-output eDP-1 resolution 1920x1080 position 0,0 
+output * bg $HOME/personal/wallpapers/dark-forest.jpg fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output eDP-1 resolution 1920x1080 pos 0 0 
+output eDP-1 scale 1
 
 ### Idle configuration
 #
 # Example configuration:
 #
-exec swayidle -w \
-        timeout 300 'swaylock -f -c $base' \
-        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock -f -c $base'
-
-
+exec_always swayidle -w \
+         timeout 300 'swaymsg "output * dpms  off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f' \
+	 timeout 600  'systemctl suspend'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-# Touchpad
-input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-    accel_profile adaptive
-    pointer_accel 0.3
-}
-
-# Keyboard
-input type:keyboard {
-    repeat_delay 300
-    repeat_rate 50
-    xkb_layout "tr"
-    xkb_options caps:escape
-}
+#
+   input type:touchpad {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+#
+   input type:keyboard {
+       xkb_layout "tr"
+   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
@@ -84,17 +74,24 @@ input type:keyboard {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
+    bindsym $mod+d exec $HOME/.config/wofi/scripts/appmenu.sh
+    
+    bindsym $mod+t exec $file
+    
+# Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
     floating_modifier $mod normal
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    
 
-    bindsym $mod+Shift+e exec $exit
 #
 # Moving around:
 #
@@ -119,6 +116,8 @@ input type:keyboard {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+
 #
 # Workspaces:
 #
@@ -219,25 +218,13 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
-    bindsym $mod+Print exec grim -g "$(slurp)"
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
-    # Lock screen
-    bindsym $mod+Shift+m exec swaylock
-    bindsym $mod+F11 exec pkill -USR1 wlsunset
+    # bindsym Print exec grim
+    bindsym Print exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png && notify-send "Screenshot taken"'
+    bindsym $mod+Print exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png && notify-send "Screenshot taken"'
+    bindsym $mod+Shift+Print exec sh -c 'grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot copied to clipboard"'
 
 
 
-
-### Window styling (Catppuccin theme)
-# Window colors
-#                       border     bg         text       indicator  child_border
-client.focused          $lavender  $base      $text      $rosewater $lavender
-client.focused_inactive $overlay0  $base      $text      $rosewater $overlay0
-client.unfocused        $overlay0  $base      $subtext1  $rosewater $overlay0
-client.urgent           $peach     $base      $peach     $overlay0  $peach
-client.placeholder      $overlay0  $base      $text      $overlay0  $overlay0
-client.background       $base
 
 # Window borders
 default_border pixel 2
@@ -246,37 +233,52 @@ gaps inner 8
 gaps outer 4
 
 
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-   swaybar_command waybar
-   # position top
-   # height 16
-   # status_padding 0
-   # tray_output none
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
+    font pango:Iosevka Nerd Font 16
+    position top
 
-   # status_command i3status-rs ~/.config/i3status-rust/config.toml
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    # status_cmmand while date +'%Y-%m-%d %X'; do sleep 1; done
 
-   # colors {
-   #     statusline $text
-   #     background $base
-   #     inactive_workspace $surface0 $base $subtext1
-   #     active_workspace $surface1 $base $text
-   #     focused_workspace $lavender $lavender $base
-   #     urgent_workspace $red $red $base
-   #     binding_mode $yellow $yellow $base
-   # }
-   # 
-   # font pango:JetBrains Mono 10
-   # height 30
-   # separator_symbol " | "
+    colors {
+	background         $base
+	statusline         $text
+	focused_statusline $text
+	focused_separator  $base
+
+	# target           border bg        text
+	focused_workspace  $base  $mauve    $crust
+	active_workspace   $base  $surface2 $text
+	inactive_workspace $base  $base     $text
+	urgent_workspace   $base  $red      $crust
+    }
 }
 
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="thunar"] floating enable
 for_window [floating] move position center
-for_window [class="Godot" instance="Godot_Editor" title=".*"] floating enable
-for_window [class="Godot" instance="Godot_Editor" title=".*Godot Engine"] floating disable
+
+exec_always {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Macchiato-Standard-Lavender-Dark'
+    # gsettings set org.gnome.desktop.interface icon-theme 'catppuccin-macchiato-dark-cursors'
+    gsettings set org.gnome.desktop.interface font-name 'Iosevka Nerd Font 16'
+}
+
+seat seat0 xcursor_theme 'catppuccin-macchiato-dark-cursors' 22
 
 include /etc/sway/config.d/*
