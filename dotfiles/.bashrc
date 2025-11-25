@@ -108,3 +108,5 @@ su=38;2;237;135;150:ow=38;2;166;209;137:st=38;2;125;196;228:\
 tw=38;2;166;209;137:*~=38;2;165;173;203"
 
 eval "$(mise activate bash)"
+export CHROME_EXECUTABLE=/usr/bin/google-chrome
+export CHROME_EXECUTABLE=/opt/google/chrome/chrome

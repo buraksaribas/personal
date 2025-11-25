@@ -6,7 +6,7 @@ progress-color=over #363a4f
 [urgency=high]
 border-color=#f5a97f
 
-font=Iosevka Nerd Font 16
+font=Iosevka Nerd Font 14
 layer=overlay
 anchor=top-right
 width=300
