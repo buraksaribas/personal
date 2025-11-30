@@ -1,3 +1,8 @@
+# Image path supports environment variables and shell expansions,
+# e.g. image=$HOME/Pictures/default.png
+image=$HOME/personal/wallpapers/horizon.jpg
+scaling=fill
+
 color=24273a
 bs-hl-color=f4dbd6
 caps-lock-bs-hl-color=f4dbd6

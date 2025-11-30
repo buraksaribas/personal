@@ -1,0 +1,202 @@
+@import "./themes/catppuccin-macchiato.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  border-radius: 0;
+}
+
+window#waybar {
+  background-color: rgba(30, 30, 46, 0.9);
+  /*border-bottom: 2px solid @lavender;*/
+  color: @text;
+}
+
+window#waybar.hidden {
+  opacity: 0.3;
+}
+
+window#waybar.termite {
+  background-color: @surface0;
+  border-bottom: 2px solid @lavender;
+}
+
+window#waybar.chromium {
+  background-color: @base;
+  border: none;
+}
+
+tooltip {
+  background: rgba(49, 50, 68, 0.9);
+  border: 1px solid @lavender;
+  color: @text;
+  /* padding: 3px 7px; */
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: @text;
+}
+
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 2px @lavender;
+}
+
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: @text;
+}
+
+
+#workspaces button:hover {
+  color: @lavender;
+}
+
+#workspaces button.focused {
+  background-color: @lavender;
+  color: @base;
+}
+
+#workspaces button.urgent {
+  background-color: @peach;
+  color: @base
+}
+
+#mode {
+  background-color: @surface0;
+  border: 1px solid @lavender;
+  color: @text;
+  padding: 0 6px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#tray,
+#bluetooth,
+#idle_inhibitor,
+#systemd-failed-units,
+#network,
+#custom-camera,
+#custom-uptime,
+#custom-weather,
+#custom-power {
+  padding: 0 5px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#tray:hover,
+#custom-power:hover,
+#bluetooth:hover,
+#idle_inhibitor:hover,
+#custom-camera:hover,
+#systemd-failed-units:hover,
+#network:hover,
+#custom-weather:hover,
+#custom-power:hover,
+#custom-uptime:hover 
+{
+  background: inherit;
+  box-shadow: inset 0 2px @lavender;
+
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+#clock {}
+
+#battery {}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+}
+
+@keyframes blink {
+  to {
+    background-color: @red;
+    color: @base;
+  }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: @surface0;
+  color: @lavender;
+}
+
+#cpu {}
+
+#memory {}
+
+#backlight {}
+
+#network {}
+
+#network.disconnected {}
+
+#pulseaudio {}
+
+#pulseaudio.muted {}
+
+#temperature {}
+
+#temperature.critical {
+  background-color: @red;
+  color: @base;
+}
+
+#tray {}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+  color: @base;
+}
+
+#idle_inhibitor {}
+
+#idle_inhibitor.activated {
+  color: @lavender;
+}

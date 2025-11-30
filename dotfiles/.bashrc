@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
 # Catppuccin Macchiato Theme
 CTP_ROSEWATER="\[\e[38;2;244;219;214m\]"
 CTP_FLAMINGO="\[\e[38;2;240;198;198m\]"
@@ -32,12 +37,11 @@ PS1+="\n"
 PS1+="\$([[ \$? != 0 ]] && echo \"${CTP_RED}\" || echo \"${CTP_GREEN}\")❯${CTP_RESET} "
 export PS1
 
-### Path & ENV
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Rust toolchain env
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 
 ### Aliases
 alias ls='ls --color=auto'
@@ -97,8 +101,6 @@ shopt -s expand_aliases
 
 # Bash Completion
 [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
-[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 
 # Catppuccin Macchiato LS_COLORS
 export LS_COLORS="di=38;2;138;173;244:fi=38;2;202;211;245:ln=38;2;198;160;246:\
@@ -108,5 +110,3 @@ su=38;2;237;135;150:ow=38;2;166;209;137:st=38;2;125;196;228:\
 tw=38;2;166;209;137:*~=38;2;165;173;203"
 
 eval "$(mise activate bash)"
-export CHROME_EXECUTABLE=/usr/bin/google-chrome
-export CHROME_EXECUTABLE=/opt/google/chrome/chrome
