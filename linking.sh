@@ -4,22 +4,31 @@ set -euo pipefail
 DOTFILES_DIR="$HOME/personal/dotfiles"
 
 DOTFILES=(
-  .bashrc
+  #.bashrc
   .gitconfig
   #.zshrc
 )
 
+BASHRC_D_FILES=(
+  00-env.sh
+  10-aliases.sh
+  20-functions.sh
+  #30-ls_colors.sh
+  #50-prompt.sh
+  99-others.sh
+)
+
 CONFIG_DIRS=(
-  dunst
-  foot
+  #dunst
+  #foot
   #i3status-rust
   #mako
   nvim
-  rofi
-  sway
-  swaylock
-  tmux
-  waybar
+  #rofi
+  #sway
+  #swaylock
+  #tmux
+  #waybar
   #wofi
 )
 
@@ -68,6 +77,12 @@ if [ -d "$DOTFILES_DIR" ]; then
     safe_link "$DOTFILES_DIR/$file" "$HOME/$file"
   done
 fi
+
+mkdir -p "$HOME/.bashrc.d"
+for rc in "${BASHRC_D_FILES[@]}"; do
+  [[ "$rc" =~ ^#.*$ ]] && continue
+  safe_link "$DOTFILES_DIR/.bashrc.d/$rc" "$HOME/.bashrc.d/$rc"
+done
 
 mkdir -p "$HOME/.config"
 for cfg in "${CONFIG_DIRS[@]}"; do
