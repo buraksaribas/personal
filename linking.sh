@@ -13,23 +13,25 @@ BASHRC_D_FILES=(
   00-env.sh
   10-aliases.sh
   20-functions.sh
-  #30-ls_colors.sh
-  #50-prompt.sh
+  30-ls_colors.sh
+  50-prompt.sh
   99-others.sh
 )
 
 CONFIG_DIRS=(
-  #dunst
+  dunst
   #foot
+  hypr
   #i3status-rust
+  kitty
   #mako
   nvim
   #rofi
   #sway
   #swaylock
   #tmux
-  #waybar
-  #wofi
+  waybar
+  wofi
 )
 
 safe_link() {

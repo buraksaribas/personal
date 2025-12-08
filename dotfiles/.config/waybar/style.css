@@ -8,7 +8,9 @@
 
 window#waybar {
   background-color: rgba(30, 30, 46, 0.9);
-  /*border-bottom: 2px solid @lavender;*/
+  border-bottom: 2px solid @lavender;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: @text;
 }
 
@@ -49,6 +51,7 @@ button:hover {
 
 #workspaces button {
   padding: 0 5px;
+  padding-right: 8px;
   background-color: transparent;
   color: @text;
 }
@@ -59,6 +62,11 @@ button:hover {
 }
 
 #workspaces button.focused {
+  background-color: @lavender;
+  color: @base;
+}
+
+#workspaces button.active {
   background-color: @lavender;
   color: @base;
 }
@@ -90,7 +98,8 @@ button:hover {
 #custom-camera,
 #custom-uptime,
 #custom-weather,
-#custom-power {
+#custom-powermenu,
+#custom-appmenu{
   padding: 0 5px;
 }
 
@@ -102,15 +111,15 @@ button:hover {
 #backlight:hover,
 #pulseaudio:hover,
 #tray:hover,
-#custom-power:hover,
 #bluetooth:hover,
 #idle_inhibitor:hover,
 #custom-camera:hover,
 #systemd-failed-units:hover,
 #network:hover,
 #custom-weather:hover,
-#custom-power:hover,
-#custom-uptime:hover 
+#custom-powermenu:hover,
+#custom-uptime:hover,
+#custom-appmenu:hover
 {
   background: inherit;
   box-shadow: inset 0 2px @lavender;
@@ -122,12 +131,10 @@ button:hover {
   margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }

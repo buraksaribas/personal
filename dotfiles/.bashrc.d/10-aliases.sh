@@ -31,4 +31,8 @@ alias gdc='git diff --cached'
 alias glog="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gundo='git reset --soft HEAD~1'
 
-alias update='sudo dnf update -y && flatpak update -y'
+# alias update='sudo dnf update -y && flatpak update -y'
+alias update='sudo pacman -Syu'
+
+alias pavucontrol='pavucontrol-qt'
+

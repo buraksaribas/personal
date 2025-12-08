@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(printf " Lock\n Shutdown\n Reboot\n Logout\n Suspend\n Hibernate" | rofi -dmenu -i -p "Power")
+chosen=$(printf " Lock\n Shutdown\n Reboot\n Logout\n Suspend\n Hibernate" | wofi -dmenu -i -p "Power")
 
 case "$chosen" in
   *Lock*) swaylock ;;
